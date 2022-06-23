@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Paddlex
+  - Paddlez
+  - Ball
+  - Skor1
+  - Skor2
+  - Skor3
+  - Skor4
   layers:
   - Default
   - TransparentFX
