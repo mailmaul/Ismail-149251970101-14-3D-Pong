@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallSpawner : MonoBehaviour
 {
-	
+	/*
 	public string spawnPointTag = "sometag";
 	public bool alwaysSpawn = true;
     public float spawnInterval;
@@ -15,13 +15,22 @@ public class BallSpawner : MonoBehaviour
 	public List<GameObject> prefabsToSpawn;
 
     private List<GameObject> BallList;
+    */
+
+    public Transform spawnArea;
+    public List<Transform> egoSpawnCoor;
+    public int maxBallSpawned, spawnInterval;
+    public GameObject ballTemplate;
+    private List<GameObject> ballList;
+
+    private float timer;
 	
     // Start is called before the first frame update
     void Start()
     {
-        BallList = new List<GameObject>();
+        ballList = new List<GameObject>();
         timer = 0;
-        GenerateRandomBall();
+        
     }
 
     private void Update() {
@@ -29,40 +38,69 @@ public class BallSpawner : MonoBehaviour
 
         if( timer > spawnInterval)
         {
-            GenerateRandomBall();
+            //GenerateRandomBall();
+            SpawnBallOnRandomSpecificCoor();
             timer -= spawnInterval;
         }
     }
 
-    private void OnTriggerEnter(Collider collision) {
-        if (collision.tag == "Ball") {
-            Destroy(collision.gameObject);
+    public void SpawnBallOnRandomSpecificCoor()
+    {
+        int randomIndex = Random.Range(0, egoSpawnCoor.Count);
+        SpawnBallOnRandomSpecificCoor(new Vector3(egoSpawnCoor[randomIndex].position.x, egoSpawnCoor[randomIndex].position.y, egoSpawnCoor[randomIndex].position.z), randomIndex);
+    }
+
+
+    public void SpawnBallOnRandomSpecificCoor(Vector3 position, int index)
+    {
+        if (ballList.Count >= maxBallSpawned)
+        {
+            return;
+        }
+
+        GameObject ball = Instantiate(ballTemplate, new Vector3(position.x, position.y, position.z), Quaternion.identity, spawnArea);
+    
+        switch(index+1)
+        {
+            case 1:
+            ball.GetComponent<Ball>().direction = new Vector3(10, 0 , -10);
+            Debug.Log("1");
+            break;
+
+            case 2:
+            ball.GetComponent<Ball>().direction = new Vector3(10, 0 , 10);
+            Debug.Log("2");
+            break;
+
+            case 3:
+            ball.GetComponent<Ball>().direction = new Vector3(-10, 0 , -10);
+            Debug.Log("3");
+            break;
+
+            case 4:
+            ball.GetComponent<Ball>().direction = new Vector3(-10, 0 , 10);
+            Debug.Log("4");
+            break;
+        }
+
+        ball.SetActive(true);
+
+        ballList.Add(ball);
+    }
+
+    public void RemoveBall(GameObject ball)
+    {
+        ballList.Remove(ball);
+        Destroy(ball);
+    }
+
+    public void RemoveAllBall()
+    {
+        while(ballList.Count > 0)
+        {
+            RemoveBall(ballList[0]);
         }
     }
 
-
-    public void GenerateRandomBall()
-    {
-        GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag(spawnPointTag);
-		foreach(GameObject spawnPoint in spawnPoints){
-			int randomPrefab = Random.Range(0, 5);
-			if(alwaysSpawn){
-				pts = Instantiate(prefabsToSpawn[randomPrefab]);
-				pts.transform.position = spawnPoint.transform.position;
-			}else{
-
-                if (BallList.Count <= maxSpawn)
-                {
-                    int spawnOrNot = Random.Range(0, 5);
-                    if(spawnOrNot == 0){
-					pts = Instantiate(prefabsToSpawn[randomPrefab]);
-					pts.transform.position = spawnPoint.transform.position;
-
-                    BallList.Add(pts);
-				    }
-                }
-			}
-		}
-    }
 
 }

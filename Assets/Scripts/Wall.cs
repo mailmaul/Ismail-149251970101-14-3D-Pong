@@ -15,7 +15,7 @@ public class Wall : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter(Collider collision) {
         if (collision.tag == "Ball") {
-            Destroy(collision.gameObject);
+           // Destroy(collision.gameObject);
             
         }
     }

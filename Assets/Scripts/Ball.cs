@@ -7,6 +7,8 @@ public class Ball : MonoBehaviour
     public float speed;
     public Vector3 direction;
     public ScoreManager manager;
+    public BallSpawner spawner;
+    public GameObject bola;
     
     private Rigidbody rb;
 
@@ -14,7 +16,6 @@ public class Ball : MonoBehaviour
     void Start()
     {
         this.rb = GetComponent<Rigidbody>();
-        this.direction = new Vector3 (1f, 0, 0.5f);
     }
 
     // Update is called once per frame
@@ -39,18 +40,22 @@ public class Ball : MonoBehaviour
 
         if (other.CompareTag("Skor1")){
             manager.AddPlayer1Score(1);
+            spawner.RemoveBall(gameObject);
         }
 
         if (other.CompareTag("Skor2")){
             manager.AddPlayer2Score(1);
+            spawner.RemoveBall(gameObject);
         }
 
         if (other.CompareTag("Skor3")){
             manager.AddPlayer3Score(1);
+            spawner.RemoveBall(gameObject);
         }
 
         if (other.CompareTag("Skor4")){
             manager.AddPlayer4Score(1);
+            spawner.RemoveBall(gameObject);
         }
     }
 }
