@@ -45,6 +45,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: UI
+    uniqueID: 4144839987
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: ATAS
+    uniqueID: 568764477
     locked: 0

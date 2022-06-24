@@ -607,8 +607,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -51.13797, y: -34}
-  m_SizeDelta: {x: 363.92, y: 70.5054}
+  m_AnchoredPosition: {x: -36.679916, y: -34}
+  m_SizeDelta: {x: 392.8361, y: 70.5054}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1243245116
 MonoBehaviour:
@@ -646,10 +646,10 @@ MonoBehaviour:
   m_Text: 'Setiap Player memiliki 10 poin pada awal permainan
 
     Setiap Bola yang
-    melewati Paddle dan menyentuh Gawang Player maka Poin akan berkutang 1 Poin.
+    melewati Paddle dan menyentuh Gawang maka Poin Player tersebut akan berkutang
+    1 Poin.
 
-    Bila
-    Poin Mencapai 0 maka player akan dinyatakan kalah'
+    Bila Poin Mencapai 0 maka player akan dinyatakan kalah'
 --- !u!222 &1243245117
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -971,8 +971,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -102.1, y: 51.3}
-  m_SizeDelta: {x: 261.65, y: 84.264}
+  m_AnchoredPosition: {x: -102.1, y: 50.21809}
+  m_SizeDelta: {x: 261.65, y: 86.4278}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2048517580
 MonoBehaviour:
