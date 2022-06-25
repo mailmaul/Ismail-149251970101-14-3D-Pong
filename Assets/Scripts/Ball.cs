@@ -38,6 +38,10 @@ public class Ball : MonoBehaviour
             direction.z = -direction.z;
         }
 
+         if (other.CompareTag("Ball")){
+            direction.z = -direction.z;
+        }
+
         if (other.CompareTag("Skor1")){
             manager.AddPlayer1Score(1);
             spawner.RemoveBall(gameObject);
